@@ -57,7 +57,7 @@ app.post("/api/tweets", async (req, res) => {
     const tweetData = new Tweet({
       username,
       tweet,
-      usernamesLiked: ["user1", "user2", "user3"]
+      usernamesLiked: []
     });
   
     const newTweet = await tweetData.save();
