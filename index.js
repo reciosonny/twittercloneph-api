@@ -121,10 +121,10 @@ app.delete("/api/tweets/:id", async (req, res) => {
   
 });
 
+app.get("/", (req, res) => {
 
-
-
-
+  res.send("Twitter App API")
+});
 
 
 const PORT = process.env.PORT || 5000;
