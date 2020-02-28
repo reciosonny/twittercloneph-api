@@ -41,6 +41,7 @@ app.get("/api/tweets", async (req, res) => {
       tweet: x.tweet,
       username: x.username,
       numLikes: x.usernamesLiked.length,
+      usernamesLiked: x.usernamesLiked,
       createdAt: x.created_at,
       updatedAt: x.updated_at
     }
