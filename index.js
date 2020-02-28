@@ -32,13 +32,17 @@ app.get("/api/test", (req, res) => {
 app.get("/api/tweets", async (req, res) => {
 
   const data = await Tweet.find({});
-  const finalData = data.map(x => {
 
+  const finalData = data.sort((a, b) => {
+    return new Date(b.created_at) - new Date(a.created_at);
+  }).map(x => {
     return {
       id: x._id,
       tweet: x.tweet,
       username: x.username,
-      numLikes: x.usernamesLiked.length
+      numLikes: x.usernamesLiked.length,
+      createdAt: x.created_at,
+      updatedAt: x.updated_at
     }
   });
 
@@ -112,10 +116,7 @@ app.delete("/api/tweets/:id", async (req, res) => {
     res.send(count.toString());
 
   } catch (error) {
-    
-    debugger;
     res.status(500).send(error);
-
   }
 
   
